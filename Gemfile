@@ -58,3 +58,5 @@ gem "slim-rails"
 gem 'devise'
 
 gem "figaro"
+
+gem "pundit"
