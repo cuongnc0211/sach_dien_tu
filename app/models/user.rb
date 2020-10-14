@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: {super_admin: :super_admin, admin: :admin, user: :user}
+
+  def is_admin
+    super_admin? || admin?
+  end
 end
