@@ -1,0 +1,16 @@
+section.content-header
+  .row.mb-2
+    .col-sm-6
+      = link_to "List users", admin_users_path
+    .col-sm-6
+      h1 User
+
+section.content
+  .row.mb-2
+    .col-sm-12
+      .card
+        .card-header
+          h3.card-title
+            | Create user
+        .card-body
+          = render 'form', user: @user

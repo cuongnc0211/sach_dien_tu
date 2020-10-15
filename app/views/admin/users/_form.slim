@@ -1,0 +1,14 @@
+.col-md-6.offset-md-3
+  = simple_form_for [:admin, user], input_html: { class: 'form' } do |f|
+    .form-group
+      = f.input :email, class: 'form-control'
+
+    .form-group
+      = f.input :name, class: 'form-control'
+
+    - unless user.persisted?
+      .form-group
+        = f.input :password, class: 'form-control'
+
+    .form-group
+      = f.submit "Submit", class: 'form-control btn btn-block btn-success'

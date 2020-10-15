@@ -63,6 +63,14 @@ gem "pundit"
 
 gem "pry"
 
+gem "kaminari"
+
+gem "ransack"
+
+gem "searchkick"
+
+gem 'simple_form'
+
 #crawl gem
 gem "capybara"
 # gem "capybara-webkit"

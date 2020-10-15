@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :books
+
   enum role: {super_admin: 'super_admin', admin: 'admin', user: 'user'}
 
   def is_admin

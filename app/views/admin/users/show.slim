@@ -1,0 +1,28 @@
+section.content-header
+  .row.mb-2
+    .col-sm-6
+      = link_to "List users", admin_users_path
+    .col-sm-6
+      h1 User
+
+section.content
+  .row.mb-2
+    .col-sm-12
+      .card
+        .card-header
+          h3.card-title = @user.name
+        .card-body
+          table.table.table-striped
+            tbody
+              tr
+                td ID
+                td = @user.id
+              tr
+                td Email
+                td = @user.email
+              tr
+                td ID
+                td = @user.name
+              tr
+                td ID
+                td = @user.created_at

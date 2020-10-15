@@ -8,4 +8,13 @@
 
 puts "create admin"
 
-admin = User.create(email: ENV["ADMIN_EMAIL"], password: ENV["ADMIN_PASS"], role: :super_admin)
+admin = User.create(email: ENV["ADMIN_EMAIL"], password: ENV["ADMIN_PASS"], role: :super_admin, name: "Super Admin")
+
+puts "create bot"
+
+bot = User.create(email: 'sachdientu@bot.com', password: '123123', role: :user, name: 'Sach Dien Tu')
+
+puts "create users"
+10.times do |n|
+  User.create(email: "user_#{n + 1}@gmail.com", password: '123123', role: :user, name: "User_#{n+1}")
+end

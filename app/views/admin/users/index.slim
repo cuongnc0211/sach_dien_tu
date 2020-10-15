@@ -1,6 +1,8 @@
 section.content-header
   .row.mb-2
     .col-sm-6
+      = link_to 'New User', new_admin_user_path
+    .col-sm-6
       h1 Users
 
 section.content
@@ -15,6 +17,9 @@ section.content
               th ID
               th Email
               th Name
+              th Joined At
+              th Action
             tbody
-              tr
+              = render partial: 'user', collection: @users, as: :user
         .card-footer.clearfix
+          = paginate @users
