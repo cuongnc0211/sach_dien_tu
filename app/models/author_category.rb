@@ -1,0 +1,2 @@
+class AuthorCategory < ApplicationRecord
+end

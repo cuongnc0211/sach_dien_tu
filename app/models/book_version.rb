@@ -1,0 +1,2 @@
+class BookVersion < ApplicationRecord
+end

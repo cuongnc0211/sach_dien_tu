@@ -6,7 +6,7 @@ class Admin::BaseController < ApplicationController
   private
 
   def authen_admin
-    return if current_user.user?
+    return if current_user.is_admin
 
     flash[:errors] = "You don't have authorize to access this content"
     redirect_to root_path
