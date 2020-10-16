@@ -1,0 +1,13 @@
+.col-md-6.offset-md-3
+  = simple_form_for [:admin, author], input_html: { class: 'form' } do |f|
+    .form-group
+      = f.input :full_name, class: 'form-control'
+
+    .form-group
+      = f.input :birth_day, class: 'form-control'
+
+    .form-group
+      = f.input :nationality, class: 'form-control'
+
+    .form-group
+      = f.submit "Submit", class: 'form-control btn btn-block btn-success'

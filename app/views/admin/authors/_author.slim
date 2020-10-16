@@ -1,0 +1,16 @@
+tr
+  td = link_to author.id, admin_author_path(author)
+  td = link_to author.full_name, admin_author_path(author)
+  td = author.birth_day
+  td = author.nationality
+  td
+    .margin
+      .btn-group
+        span
+          = link_to edit_admin_author_path(author), class: "btn-outline-warning" do
+            <i class="fas fa-edit"></i>
+        span
+          | &nbsp &nbsp
+        span
+          = link_to admin_author_path(author), class: "btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } do
+            <i class="fas fa-trash"></i>

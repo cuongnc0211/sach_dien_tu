@@ -1,0 +1,15 @@
+section.content-header
+  .row.mb-2
+    .col-sm-6
+      = link_to "List authors", admin_authors_path
+    .col-sm-6
+      h1 Edit Author
+
+section.content
+  .row.mb-2
+    .col-sm-12
+      .card
+        .card-header
+          h3.card-title = @author.full_name
+        .card-body
+          = render 'form', author: @author

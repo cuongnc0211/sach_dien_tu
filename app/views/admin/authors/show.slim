@@ -1,0 +1,28 @@
+section.content-header
+  .row.mb-2
+    .col-sm-6
+      = link_to "List authors", admin_authors_path
+    .col-sm-6
+      h1 User
+
+section.content
+  .row.mb-2
+    .col-sm-12
+      .card
+        .card-header
+          h3.card-title = @author.full_name
+        .card-body
+          table.table.table-striped
+            tbody
+              tr
+                td ID
+                td = @author.id
+              tr
+                td Full Name
+                td = @author.full_name
+              tr
+                td BirthDay
+                td = @author.birth_day
+              tr
+                td Nationality
+                td = @author.nationality
