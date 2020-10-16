@@ -1,0 +1,15 @@
+section.content-header
+  .row.mb-2
+    .col-sm-6
+      = link_to "List categories", admin_categories_path
+    .col-sm-6
+      h1 Edit Author
+
+section.content
+  .row.mb-2
+    .col-sm-12
+      .card
+        .card-header
+          h3.card-title = @category.name
+        .card-body
+          = render 'form', category: @category

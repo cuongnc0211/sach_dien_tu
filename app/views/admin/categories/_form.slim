@@ -1,0 +1,10 @@
+.col-md-6.offset-md-3
+  = simple_form_for [:admin, category], input_html: { class: 'form' } do |f|
+    .form-group
+      = f.input :name, class: 'form-control'
+
+    .form-group
+      = f.input :description, class: 'form-control'
+
+    .form-group
+      = f.submit "Submit", class: 'form-control btn btn-block btn-success'

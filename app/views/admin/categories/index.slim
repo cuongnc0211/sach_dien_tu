@@ -1,25 +1,24 @@
 section.content-header
   .row.mb-2
     .col-sm-6
-      = link_to 'New Author', new_admin_author_path
+      = link_to 'New Category', new_admin_category_path
     .col-sm-6
-      h1 Authors
+      h1 Categories
 
 section.content
   .row.mb-2
     .col-sm-12
       .card
         .card-header
-          h3.card-title Authors
+          h3.card-title Categories
         .card-body
           table.table.table-striped
             thead
               th ID
-              th full_name
-              th birth_day
-              th nationality
+              th Name
+              th Description
               th Action
             tbody
-              = render partial: 'author', collection: @authors, as: :author
+              = render partial: 'category', collection: @categories, as: :category
         .card-footer.clearfix
-          = paginate @authors if @authors
+          = paginate @categories if @categories

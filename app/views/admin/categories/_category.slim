@@ -1,0 +1,15 @@
+tr
+  td = link_to category.id, admin_category_path(category)
+  td = link_to category.name, admin_category_path(category)
+  td = category.description
+  td
+    .margin
+      .btn-group
+        span
+          = link_to edit_admin_category_path(category), class: "btn-outline-warning" do
+            <i class="fas fa-edit"></i>
+        span
+          | &nbsp &nbsp
+        span
+          = link_to admin_category_path(category), class: "btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } do
+            <i class="fas fa-trash"></i>
