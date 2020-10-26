@@ -83,3 +83,10 @@ gem "nokogiri"
 gem "selenium-webdriver"
   # Easy installation and use of web drivers to run system tests with browsers
 gem "webdrivers"
+
+#deployment
+
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv'
