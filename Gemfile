@@ -79,6 +79,7 @@ gem 'simple_form'
 gem "capybara"
 # gem "capybara-webkit"
 gem "nokogiri"
+gem "mechanize"
 
 gem "selenium-webdriver"
   # Easy installation and use of web drivers to run system tests with browsers
@@ -90,3 +91,7 @@ gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
 gem 'capistrano-rbenv'
+gem 'capistrano-rvm'
+gem 'capistrano3-puma'
+gem "capistrano-chruby"
+gem "capistrano-passenger"
