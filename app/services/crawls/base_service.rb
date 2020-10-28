@@ -55,6 +55,8 @@ class Crawls::BaseService
 
     build_book_params(page, title, author_id, category_id, book_link_elements)
     @logger.info("#{title} || #{book_link_elements.first.text}")
+  rescue StandardError => e
+    @logger.info("errors in crawl detail page #{e}")
   end
 
   def find_next_paginate_url(page)
@@ -71,7 +73,7 @@ class Crawls::BaseService
     next_paginate.at("a").attributes["href"]&.value
   rescue StandardError => e
     puts "errors in next_paginate_url method"
-    @logger.info("errors in next_paginate_url method", e)
+    @logger.info("errors in next_paginate_url method #{e}")
   end
 
   def map_authors
@@ -111,7 +113,7 @@ class Crawls::BaseService
   def build_book_params(page, title, author_id, category_id, book_link_elements)
     book_versions = {}
     book_link_elements.each_with_index do |bl, index|
-      book_versions["#{index}"] = {file_type: bl.text, url: bl.attributes["href"]&.value}
+      book_versions["#{index}"] = {file_type: bl&.text, url: bl&.attributes["href"]&.value}
     end
 
     book_params = {
@@ -124,6 +126,11 @@ class Crawls::BaseService
       category_id: category_id,
       book_versions_attributes: book_versions
     }
-    Book.create book_params
+    
+    begin
+      Book.create book_params
+    rescue StandardError => e
+      @logger.info("errors in save book #{e}")
+    end
   end
 end
