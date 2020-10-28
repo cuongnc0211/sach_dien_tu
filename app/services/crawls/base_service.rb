@@ -10,6 +10,8 @@ class Crawls::BaseService
   CATEGORY_SELECTOR = ".row.thong_tin_ebook .col-md-8 h5:nth-of-type(2)"
   AUTHOR_SELECTOR = ".row.thong_tin_ebook .col-md-8 h5:nth-of-type(1)"
   LINK_BOOKS_SELECTOR = ".row.thong_tin_ebook .col-md-8 a[target=_blank]"
+  THUMB_SELECTOR = ".thong_tin_ebook .col-md-4.cover img"
+  DESCRIPTION_SELECTOR = ".gioi_thieu_sach"
 
   def initialize(source, user = User.find_by(email: 'sachdientu@bot.com'))
     @source = source
@@ -51,7 +53,7 @@ class Crawls::BaseService
     category_id = load_or_create_category(page.at(CATEGORY_SELECTOR)&.text)
     book_link_elements = page.search(LINK_BOOKS_SELECTOR)
 
-    build_book_params(title, author_id, category_id, book_link_elements)
+    build_book_params(page, title, author_id, category_id, book_link_elements)
     @logger.info("#{title} || #{book_link_elements.first.text}")
   end
 
@@ -106,7 +108,7 @@ class Crawls::BaseService
     end
   end
 
-  def build_book_params(title, author_id, category_id, book_link_elements)
+  def build_book_params(page, title, author_id, category_id, book_link_elements)
     book_versions = {}
     book_link_elements.each_with_index do |bl, index|
       book_versions["#{index}"] = {file_type: bl.text, url: bl.attributes["href"]&.value}
@@ -117,6 +119,8 @@ class Crawls::BaseService
       source_id: source.id,
       author_id: author_id,
       user_id: user.id,
+      thumb_url: page.at(THUMB_SELECTOR).attributes["src"]&.value,
+      description: page.at(DESCRIPTION_SELECTOR)&.text,
       category_id: category_id,
       book_versions_attributes: book_versions
     }
