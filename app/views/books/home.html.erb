@@ -4,7 +4,9 @@
 </figcaption>
 <div class="nospace group overview home-book-container">
   <%= render partial: :book, collection: @books, as: :book %>
-  <div class="center">
-    <%= paginate @books %>
+  <div class="paginate-wraper">
+    <div class=paginate-section>
+      <%= paginate @books %>
+    </div>
   </div>
 </div>
