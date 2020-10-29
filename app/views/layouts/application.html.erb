@@ -8,13 +8,22 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'react' %>
 </head>
 
-<body class="">
-  <section class="">
-    <%= yield %>
-  </section>
+<body id="top" class="">
+  <%= render "layouts/user/header" %>
+  <div class="wrapper row3">
+    <figure class="hoc container clear">
+      <%= yield %>
+    </figure>
+  </div>
+  <div class="wrapper coloured">
+    <article class="hoc cta clear">
+      <h6 class="three_quarter first">Nec eros maecenas sed ligula enim proin fermentum</h6>
+      <footer class="one_quarter"><a class="btn" href="#">Viverra vehicula &raquo;</a></footer>
+    </article>
+  </div>
+  <%= render "layouts/user/footer" %>
 </body>
 
 </html>
