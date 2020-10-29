@@ -2,29 +2,9 @@
   <h6 class="heading">Category Name</h6>
   <p>Description</p>
 </figcaption>
-<ul class="nospace group overview">
-  <li class="one_third">
-    <a href="#"><img src="https://via.placeholder.com/320x240.png" alt=""></a>
-  </li>
-
-  <li class="one_third">
-    <a href="#"><img src="https://via.placeholder.com/320x240.png" alt=""></a>
-  </li>
-
-  <li class="one_third">
-    <a href="#"><img src="https://via.placeholder.com/320x240.png" alt=""></a>
-  </li>
-
-  <li class="one_third">
-    <a href="#"><img src="https://via.placeholder.com/320x240.png" alt=""></a>
-  </li>
-
-  <li class="one_third">
-    <a href="#"><img src="https://via.placeholder.com/320x240.png" alt=""></a>
-  </li>
-
-  <li class="one_third">
-    <a href="#"><img src="https://via.placeholder.com/320x240.png" alt=""></a>
-  </li>
-
-</ul>
+<div class="nospace group overview home-book-container">
+  <%= render partial: :book, collection: @books, as: :book %>
+  <div class="center">
+    <%= paginate @books %>
+  </div>
+</div>

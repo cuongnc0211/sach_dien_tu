@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "books#home"
 
-  resources :books, only: :index
+  resources :books, only: [:index, :show]
 
   namespace :admin do
     root "dashboard#home"
