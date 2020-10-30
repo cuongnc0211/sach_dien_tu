@@ -1,0 +1,8 @@
+figcaption.sectiontitle
+  h6.heading Category Name
+  p Description
+.nospace.group.overview.home-book-container
+  = render partial: :book, collection: @books, as: :book
+  .paginate-wraper
+    .paginate-section
+      = paginate @books

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root "books#home"
 
   resources :books, only: [:index, :show]
+  namespace :download do
+    resources :book_versions, only: :show
+  end
 
   namespace :admin do
     root "dashboard#home"

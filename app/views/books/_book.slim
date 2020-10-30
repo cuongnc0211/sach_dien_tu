@@ -1,0 +1,14 @@
+div class=("one_quarter book-item #{'first' if book_counter % 4 == 0}")
+  .cover
+    = link_to book_path(book) do
+      = image_tag book.thumb_url, size: "120x200"
+  .meta
+    p
+      = link_to book_path(book) do
+        b = book.title
+    p
+      = link_to book_path(book) do
+        = book.author&.full_name
+    p
+      = link_to book_path(book) do
+        = book.category&.name
