@@ -1,0 +1,7 @@
+.row
+  .col-sm-12.col-md-6.col-lg-6.offset-md-3.offset-lg-3
+    .download-box
+      h3 = "#{@book_version.title}(#{@book_version.file_type})"
+      p 
+        | Xác nhận rời trang để download, vui lòng bấm vào 
+        = link_to "đây.", @book_version.url

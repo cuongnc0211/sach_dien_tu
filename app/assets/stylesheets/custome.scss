@@ -1,0 +1,112 @@
+// bhomepage-list book custome
+.logo {
+  color: #FFA41F;
+}
+
+.home-book-container .one_quarter {
+  margin-bottom: 30px;
+}
+
+.book-item {
+  vertical-align: top;
+
+  .cover {
+    img {
+      max-width: 90%;
+      height: 300px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .meta {
+    padding-top: 5px;
+    height: 120px;
+    max-width: 75%;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.paginate-wraper {
+  width: 100%;
+  .paginate-section {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .pagination {
+      display: block !important;
+      align-self: center !important;
+    }
+  }
+}
+
+//download page
+
+.download-box {
+  text-align: center;
+  padding: 100px 0px 100px 0px;
+  font-size: 24px;
+}
+
+// book-deatil top page
+
+.book-detail {
+  padding-top: 10px;
+
+  .book-cover {
+    width: 100%;
+    height: auto;
+
+    .zoom-img-container {
+      width: 100%;
+
+      img {
+        max-width: 90%;
+        height: 400px !important;
+        display: block;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    }
+  }
+
+  .title {
+    .book-name {
+      color: #FFA41F;
+    }
+  }
+
+  .download-section {
+    padding-top: 10px;
+
+    a {
+      border: 1px solid #FFA41F;
+      border-radius: 20px;
+      
+      svg {
+        color: #FFA41F;
+      }
+    }
+  }
+
+  .description-section {
+    padding-top: 20px;
+  }
+
+  .statistic-meta {
+    .subject {
+      color: #FFA41F;
+      font-weight: bold;
+    }
+  }
+}
