@@ -1,48 +1,32 @@
-# config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "sachDienTu"
-set :repo_url, "git@example.com:me/my_repo.git"
+require 'capistrano-db-tasks'
 
-set :puma_conf, "/var/www/sachDienTu/shared/config/puma.rb"
-set :application, 'sachDienTu'
-set :repo_url, 'git@github.com:ogdenstudios/sachDienTu.git'
-set :deploy_to, '/home/ubuntu/sachDienTu'
-set :use_sudo, true
-set :branch, 'master'
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :linked_files, %w{config/master.key}
+#FIXME add your app name here
+set :application, 'sach_dien_tu'
+#FIXME replace 'git@github.com:YOUR-GIT-REPO-HERE' with your git clone url
+set :repo_url, 'git@github.com:cuongnc0211/sach_dien_tu.git'
+#FIXME add location on the server here
+set :deploy_to, '/home/deploy/sach_dien_tu'
+set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :linked_files, %w{config/database.yml config/master.key}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :keep_releases, 3
+set :keep_assets, 3
 
-# Default value for :format is :airbrussh.
-# set :format, :airbrussh
+set :db_local_clean, true
+set :db_remote_clean, true
 
-# You can configure the Airbrussh format using :format_options.
-# These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
 
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :linked_files is []
-# append :linked_files, "config/database.yml"
-
-# Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
-# Uncomment the following to require manually verifying the host key before first deploy.
-# set :ssh_options, verify_host_key: :secure
+  after :publishing, 'deploy:restart'
+  after :finishing, 'deploy:cleanup'
+end
