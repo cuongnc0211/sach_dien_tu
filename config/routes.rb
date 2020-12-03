@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post :sign_up, to: "sessions#sign_up"
       post :sign_in, to: "sessions#sign_in"
+
+      resources :books, only: :index
     end
   end
 
