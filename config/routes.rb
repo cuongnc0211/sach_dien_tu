@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       post :sign_up, to: "sessions#sign_up"
       post :sign_in, to: "sessions#sign_in"
 
-      resources :books, only: :index
+      resources :books, only: %i(index show)
     end
   end
 

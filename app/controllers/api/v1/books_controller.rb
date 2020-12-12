@@ -1,18 +1,14 @@
 module Api
   module V1
     class BooksController < ApiController
-      DEFAULT_LIMIT = 20
-
       def index
-        limit = DEFAULT_LIMIT || params[:limit]
-        binding.pry
-        books = ::Book.all.order(created_at: :desc).page(params[:page]).per limit
+        books = ::Book.all.order(created_at: :desc).page(params[:page]).per params[:limit]
 
         render json: books,
                each_serializer: ::Books::IndexSerializer,
-               include: '**',
-               success: true,
-               status: 201
+               root: "books", include: '**',
+               meta: meta_attributes(books), meta_key: 'pages',
+               status: 200
       end
     end
   end
